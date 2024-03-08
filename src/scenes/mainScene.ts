@@ -94,7 +94,7 @@ export default class MainScene extends Phaser.Scene {
         });
 
         // Displaying a message
-        const message = "Beautiful Gotham City";
+        const message = "Beautiful Desi City";
         this.add
             .text(this.cameras.main.width / 2, 250, message, {
                 color: "white",
