@@ -1,8 +1,4 @@
 import Phaser from "phaser";
-interface sceneData {
-    playerX: number;
-    playerY: number;
-}
 
 export default class MainScene extends Phaser.Scene {
     private platform?: Phaser.Physics.Arcade.StaticGroup;
