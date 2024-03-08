@@ -4,6 +4,7 @@ import PreloadScene from "./scenes/preloadScene";
 import firstScene from "./scenes/firstScene";
 import secondScene from "./scenes/secondScene";
 import finalScene from "./scenes/finalScene";
+import endingScene from "./scenes/endingScene";
 
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 600;
@@ -20,7 +21,14 @@ export const CONFIG = {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT,
     },
-    scene: [PreloadScene, MainScene, firstScene, secondScene, finalScene],
+    scene: [
+        PreloadScene,
+        MainScene,
+        firstScene,
+        secondScene,
+        finalScene,
+        endingScene,
+    ],
     physics: {
         default: "arcade",
         arcade: {

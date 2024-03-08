@@ -11,6 +11,7 @@ export default class PreloadScene extends Phaser.Scene {
         this.load.image("midImage", "assets/img/midImage.jpeg");
         this.load.image("favicon", "assets/img/favicon.jpeg");
         this.load.image("ground", "assets/img/platform.png");
+        this.load.image("theEnd", "assets/img/theEnd.jpeg");
         this.load.spritesheet("portal", "assets/portal.jpeg", {
             frameWidth: 32,
             frameHeight: 48,

@@ -1,4 +1,8 @@
 import Phaser from "phaser";
+interface sceneData {
+    playerX: number;
+    playerY: number;
+}
 
 export default class FirstScene extends Phaser.Scene {
     private platform?: Phaser.Physics.Arcade.StaticGroup;
@@ -14,8 +18,7 @@ export default class FirstScene extends Phaser.Scene {
         this.load.image("secondImage", "assets/img/secondImage.jpeg");
     }
 
-    init(data: any) {
-        // Assuming data.playerX and data.playerY are passed from MainScene
+    init(data: sceneData) {
         this.playerStartPosition = { x: data.playerX, y: data.playerY };
     }
 

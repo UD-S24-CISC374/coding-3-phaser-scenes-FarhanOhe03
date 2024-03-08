@@ -1,6 +1,11 @@
 import Phaser from "phaser";
 
-export default class FirstScene extends Phaser.Scene {
+interface sceneData {
+    playerX: number;
+    playerY: number;
+}
+
+export default class finalScene extends Phaser.Scene {
     private platform?: Phaser.Physics.Arcade.StaticGroup;
     private player?: Phaser.Physics.Arcade.Sprite;
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -14,8 +19,7 @@ export default class FirstScene extends Phaser.Scene {
         this.load.image("favicon", "assets/img/favicon.jpeg");
     }
 
-    init(data: any) {
-        // Assuming data.playerX and data.playerY are passed from MainScene
+    init(data: sceneData) {
         this.playerStartPosition = { x: data.playerX, y: data.playerY };
     }
 
@@ -67,7 +71,7 @@ export default class FirstScene extends Phaser.Scene {
 
             console.log("Player has entered the portal!");
             // Correctly reference 'this' to start the new scene
-            this.scene.start("SECOND"); // Switch scenes without passing specific data
+            this.scene.start("END"); // Switch scenes without passing specific data
         });
 
         //trying to add animation
