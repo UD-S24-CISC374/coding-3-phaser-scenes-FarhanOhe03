@@ -1,31 +1,41 @@
 import Phaser from "phaser";
 
-export default class MainScene extends Phaser.Scene {
+interface sceneData {
+    playerX: number;
+    playerY: number;
+}
+
+export default class finalScene extends Phaser.Scene {
     private platform?: Phaser.Physics.Arcade.StaticGroup;
     private player?: Phaser.Physics.Arcade.Sprite;
-    private portal?: Phaser.Physics.Arcade.StaticGroup;
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
+    private playerStartPosition?: { x: number; y: number };
 
     constructor() {
-        super({ key: "MainScene" });
+        super({ key: "FINAL" });
     }
 
-    //adding background image for scene 1
+    preload() {
+        this.load.image("favicon", "assets/img/favicon.jpeg");
+    }
+
+    init(data: sceneData) {
+        this.playerStartPosition = { x: data.playerX, y: data.playerY };
+    }
 
     create() {
         const bg = this.add.image(
             this.cameras.main.width / 2,
             this.cameras.main.height / 2,
-            "firstImage"
+            "favicon"
         );
-
-        const scaleX = this.cameras.main.width / bg.width;
-        const scaleY = this.cameras.main.height / bg.height;
-        const scale = Math.max(scaleX, scaleY);
+        const scale = Math.max(
+            this.cameras.main.width / bg.width,
+            this.cameras.main.height / bg.height
+        );
         bg.setScale(scale).setScrollFactor(0);
 
-        //creating the platform
-
+        // Recreate the platform
         this.platform = this.physics.add.staticGroup();
 
         const groundHeight = 65;
@@ -50,17 +60,18 @@ export default class MainScene extends Phaser.Scene {
         this.physics.add.collider(portal, this.platform); // To ensure the portal sits on the platform if needed
         this.physics.add.overlap(this.player, portal, () => {
             // Using an arrow function without parameters
-            const portalMessage = "enter meeee";
+            const portalMessage = "enter meeeeeeeeeeeee";
             this.add
-                .text(this.cameras.main.width / 300, 300, portalMessage, {
+                .text(this.cameras.main.width / 2, 250, portalMessage, {
                     color: "black",
                     fontSize: "30px",
                     fontFamily: "Serif",
                 })
                 .setOrigin(0.5, 0);
+
             console.log("Player has entered the portal!");
             // Correctly reference 'this' to start the new scene
-            this.scene.start("FIRST"); // Switch scenes without passing specific data
+            this.scene.start("END"); // Switch scenes without passing specific data
         });
 
         //trying to add animation
@@ -94,14 +105,17 @@ export default class MainScene extends Phaser.Scene {
         });
 
         // Displaying a message
-        const message = "Beautiful Desi City";
+        const message =
+            "Ah first day of a super hero, city saved.. until next time guys from: citySaverBoyMan";
         this.add
             .text(this.cameras.main.width / 2, 250, message, {
                 color: "white",
-                fontSize: "30px",
+                fontSize: "17px",
                 fontFamily: "Serif",
             })
             .setOrigin(0.5, 0); // Center the text horizontally
+
+        //this.scene.start("firstScene");
     }
 
     update() {
