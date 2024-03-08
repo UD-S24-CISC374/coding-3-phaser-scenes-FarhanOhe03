@@ -93,13 +93,21 @@ export default class FirstScene extends Phaser.Scene {
 
         // Displaying a message
         const message = "Woah what are all these bats????";
+        const text = "why did they just bite me?";
         this.add
             .text(this.cameras.main.width / 2, 250, message, {
                 color: "black",
                 fontSize: "30px",
                 fontFamily: "Serif",
             })
-            .setOrigin(0.5, 0); // Center the text horizontally
+            .setOrigin(0.5, 0);
+        this.add
+            .text(this.cameras.main.width / 2, 400, text, {
+                color: "black",
+                fontSize: "30px",
+                fontFamily: "Serif",
+            })
+            .setOrigin(0.5, 0);
 
         //this.scene.start("firstScene");
     }

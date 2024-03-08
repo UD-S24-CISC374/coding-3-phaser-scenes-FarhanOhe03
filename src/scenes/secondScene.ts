@@ -57,8 +57,16 @@ export default class FirstScene extends Phaser.Scene {
         this.physics.add.overlap(this.player, portal, () => {
             // Using an arrow function without parameters
             console.log("Player has entered the portal!");
+            const portalMessage = "enter meeee";
+            this.add
+                .text(this.cameras.main.width / 2, 250, portalMessage, {
+                    color: "black",
+                    fontSize: "15px",
+                    fontFamily: "Serif",
+                })
+                .setOrigin(0.5, 0);
             // Correctly reference 'this' to start the new scene
-            this.scene.start("SECOND"); // Switch scenes without passing specific data
+            this.scene.start("FINAL"); // Switch scenes without passing specific data
         });
 
         //trying to add animation

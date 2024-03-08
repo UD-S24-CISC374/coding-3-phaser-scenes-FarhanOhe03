@@ -50,6 +50,14 @@ export default class MainScene extends Phaser.Scene {
         this.physics.add.collider(portal, this.platform); // To ensure the portal sits on the platform if needed
         this.physics.add.overlap(this.player, portal, () => {
             // Using an arrow function without parameters
+            const portalMessage = "enter meeee";
+            this.add
+                .text(this.cameras.main.width / 300, 300, portalMessage, {
+                    color: "black",
+                    fontSize: "30px",
+                    fontFamily: "Serif",
+                })
+                .setOrigin(0.5, 0);
             console.log("Player has entered the portal!");
             // Correctly reference 'this' to start the new scene
             this.scene.start("FIRST"); // Switch scenes without passing specific data
